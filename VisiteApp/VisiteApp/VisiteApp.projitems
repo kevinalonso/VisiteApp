@@ -12,6 +12,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\ViewModelAdmin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\ViewModelFormulaire.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\ViewModelMain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\ViewModelVisite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -40,9 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)GettingStarted.Xamarin" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)ViewsModel\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Admin.xaml">
