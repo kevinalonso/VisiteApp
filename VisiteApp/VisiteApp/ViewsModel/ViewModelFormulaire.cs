@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VisiteApp.ViewsModel
 {
-    public class ViewModelMain
+    public class ViewModelFormulaire
     {
         #region Fields
 
@@ -15,7 +15,7 @@ namespace VisiteApp.ViewsModel
         #endregion
 
         #region Constructor
-        public ViewModelMain()
+        public ViewModelFormulaire()
         {
 
         }
