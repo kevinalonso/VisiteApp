@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VisiteApp.Views.Formulaire">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+    </Grid.RowDefinitions>
+
+    <Label Grid.Row="0" Grid.Column="0" Text="Nom visite :"/>
+    <Label Grid.Row="1" Grid.Column="0" Text="Nom produit :"/>
+    <Label Grid.Row="2" Grid.Column="0" Text="Rayon :"/>
+    <Label Grid.Row="3" Grid.Column="0" Text="Etage :"/>
+    <Label Grid.Row="4" Grid.Column="0" Text="Prix :"/>
+    <Label Grid.Row="5" Grid.Column="0" Text="Présence :"/>
+    <Label Grid.Row="6" Grid.Column="0" Text="Concurant :"/>
+
+    <Picker Grid.Row="0" Grid.Column="1"/>
+    <Entry Grid.Row="1" Grid.Column="1"/>
+    <Entry Grid.Row="2" Grid.Column="1"/>
+    <Entry Grid.Row="3" Grid.Column="1"/>
+    <Entry Grid.Row="4" Grid.Column="1"/>
+    <Entry Grid.Row="5" Grid.Column="1"/>
+
+    <Switch Grid.Row="6" Grid.Column="1"/>
+
+    <Button Grid.Row="7" Grid.ColumnSpan="2" Content="Valider"/>
+
+  </Grid>
+</ContentPage>

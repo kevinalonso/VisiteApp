@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VisiteApp.Views.Admin">
+	<Grid>
+	<Grid.RowDefinitions>
+		<RowDefinition Height="50"/>
+		<RowDefinition Height="50"/>
+    <RowDefinition Height="50"/>
+		<RowDefinition Height="*"/>
+	</Grid.RowDefinitions>
+	
+	<Button Grid.Row="0" Content="Synchroniser"/>
+	
+	<Button Grid.Row="1" Content="Nouveau Produit"/>
+    
+   <Button Grid.Row="2" Content="Nouvelle Visite"/>
+	
+	<Grid Grid.Row="3">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="50"/>
+		</Grid.RowDefinitions>
+		
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		
+		<ListView x:Name="ListVisite" Grid.Row="0" Grid.Column="0"/>
+		<ListView x:Name="ListProduit" Grid.Row="0" Grid.Column="1"/>
+		
+		<Button Grid.Row="1" Grid.ColumnSpan="2" Content="Modifier"/>
+	</Grid>
+</Grid>
+</ContentPage>
