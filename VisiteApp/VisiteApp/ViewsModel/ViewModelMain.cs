@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using VisiteApp.Core;
+using VisiteApp.Views;
 using Xamarin.Forms;
 
 namespace VisiteApp.ViewsModel
@@ -29,6 +30,7 @@ namespace VisiteApp.ViewsModel
                 OnPropertyChanged(nameof(Login));
             }
         }
+
         public ICommand Connexion { get { return _Connexion; } }
         #endregion
 
@@ -43,10 +45,24 @@ namespace VisiteApp.ViewsModel
         #endregion
 
         #region Methods
+
         private void ConnexionExecuted(object obj)
         {
+            if(this.Login != "")
+            {
+                Admin pg = new Admin();
+                ViewModelAdmin vm = new ViewModelAdmin(pg.Navigation);
+                vm.Admin = pg;
+                pg.BindingContext = vm;
+                this._Navigation.PushAsync(pg).ConfigureAwait(false);
+            }
+            else
+            {
 
+            }
+           
         }
+
         #endregion
     }
 }
