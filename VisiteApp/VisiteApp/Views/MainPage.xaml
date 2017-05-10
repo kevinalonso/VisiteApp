@@ -10,10 +10,10 @@
       <RowDefinition Height="*"/>
     </Grid.RowDefinitions>
 
-    <Grid.ColumnDefinitons>
+    <Grid.Columnefinitions>
       <ColumnDefinition Width="*"/>
       <ColumnDefinition Width="*"/>
-    </Grid.ColumnDefinitons>
+    </Grid.Columnefinitions>
 
     <Label Grid.Row="0" Grid.Column="0" Text="Login :"/>
     <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Login}"/>
