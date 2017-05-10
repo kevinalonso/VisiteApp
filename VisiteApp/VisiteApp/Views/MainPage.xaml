@@ -4,8 +4,21 @@
              xmlns:local="clr-namespace:VisiteApp"
              x:Class="VisiteApp.Views.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Grid.ColumnDefinitons>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitons>
+
+    <Label Grid.Row="0" Grid.Column="0" Text="Login :"/>
+    <Entry Grid.Row="0" Grid.Column="1"/>
+
+    <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Connexion"/>
+  </Grid>
 
 </ContentPage>
