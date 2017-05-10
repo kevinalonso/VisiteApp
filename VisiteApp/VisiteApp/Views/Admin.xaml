@@ -10,11 +10,11 @@
 		<RowDefinition Height="*"/>
 	</Grid.RowDefinitions>
 	
-	<Button Grid.Row="0" Content="Synchroniser"/>
+	<Button Grid.Row="0" Content="Synchroniser" Command="Synchro"/>
 	
-	<Button Grid.Row="1" Content="Nouveau Produit"/>
+	<Button Grid.Row="1" Content="Nouveau Produit" Command="NewProduit"/>
     
-   <Button Grid.Row="2" Content="Nouvelle Visite"/>
+   <Button Grid.Row="2" Content="Nouvelle Visite" Command="NewVisite"/>
 	
 	<Grid Grid.Row="3">
 		<Grid.RowDefinitions>
@@ -30,7 +30,7 @@
 		<ListView x:Name="ListVisite" Grid.Row="0" Grid.Column="0"/>
 		<ListView x:Name="ListProduit" Grid.Row="0" Grid.Column="1"/>
 		
-		<Button Grid.Row="1" Grid.ColumnSpan="2" Content="Modifier"/>
+		<Button Grid.Row="1" Grid.ColumnSpan="2" Content="Modifier" Command="ModifierProduit"/>
 	</Grid>
 </Grid>
 </ContentPage>
