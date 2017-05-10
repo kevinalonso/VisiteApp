@@ -13,7 +13,7 @@ namespace VisiteApp.Views
 		public MainPage()
 		{
 			InitializeComponent();
-            this.BindingContext = new ViewModelMain();
+            this.BindingContext = new ViewModelMain(Navigation);
 		}
 	}
 }
