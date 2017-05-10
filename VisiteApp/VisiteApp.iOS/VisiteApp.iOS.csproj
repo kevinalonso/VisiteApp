@@ -137,6 +137,12 @@
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AppJeu.Core\VisiteApp.Core.csproj">
+      <Project>{a37134fc-6984-4731-a102-7ed1338f4dcd}</Project>
+      <Name>VisiteApp.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\VisiteApp\VisiteApp.projitems" Label="Shared" Condition="Exists('..\VisiteApp\VisiteApp.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
