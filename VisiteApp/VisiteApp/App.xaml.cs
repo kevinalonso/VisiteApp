@@ -13,7 +13,7 @@ namespace VisiteApp
 		{
 			InitializeComponent();
 
-			MainPage = new VisiteApp.Views.MainPage();
+            MainPage = new NavigationPage(new Views.MainPage());
 		}
 
 		protected override void OnStart ()

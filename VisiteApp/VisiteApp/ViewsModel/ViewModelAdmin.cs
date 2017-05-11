@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using VisiteApp.Core;
@@ -14,15 +15,16 @@ namespace VisiteApp.ViewsModel
 
         private ICommand _ModifierProduit;
         private ICommand _Synchro;
-        private ICommand _NewProduit;
-        private ICommand _NewVisite;
+        private ICommand _Produit;
+        private ICommand _Visite;
+        private INavigation _Navigation;
         #endregion
 
         #region Properties
         public ICommand ModifierProduit { get { return _ModifierProduit; } }
         public ICommand Synchro { get { return _Synchro; } }
-        public ICommand NewProduit { get { return _NewProduit; } }
-        public ICommand NewVisite { get { return _ModifierProduit; } }
+        public ICommand Produit { get { return _Produit; } }
+        public ICommand Visite { get { return _Visite; } }
 
         private Admin _Admin;
         #endregion
@@ -41,25 +43,50 @@ namespace VisiteApp.ViewsModel
             }
         }
 
+        public INavigation Navigation
+        {
+            get
+            {
+                return _Navigation;
+            }
+
+            set
+            {
+                _Navigation = value;
+            }
+        }
+
         #endregion
 
         #region Constructor
         public ViewModelAdmin(INavigation nav)
         {
-            this._ModifierProduit = new Command(ModifierExecuted);
-            this._Synchro = new Command(SynchroExecuted);
-            this._NewProduit = new Command(NewProduitExecuted);
-            this._NewVisite = new Command(NewVisiteExecuted);
+            _Navigation = nav;
+
+            _ModifierProduit = new Command(ModifierExecuted);
+            _Synchro = new Command(SynchroExecuted);
+            _Produit = new Command(NewProduitExecuted);
+            _Visite = new Command(NewVisiteExecuted);
         }
 
         private void NewVisiteExecuted(object obj)
         {
-           // Vers page Visite
+            // Vers page Visite
+            VisiteForm pg = new VisiteForm();
+            ViewModelVisite vm = new ViewModelVisite(pg.Navigation);
+            vm.Visite = pg;
+            pg.BindingContext = vm;
+            this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
 
         private void NewProduitExecuted(object obj)
         {
-           // Vers page Produit
+            // Vers page Produit
+            Formulaire pg = new Formulaire();
+            ViewModelFormulaire vm = new ViewModelFormulaire(pg.Navigation);
+            vm.Formulaire = pg;
+            pg.BindingContext = vm;
+            this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
 
         private void SynchroExecuted(object obj)

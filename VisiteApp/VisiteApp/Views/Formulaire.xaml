@@ -9,34 +9,36 @@
     </Grid.ColumnDefinitions>
 
     <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="50"/>
-      <RowDefinition Height="50"/>
-    </Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
-    <Label Grid.Row="0" Grid.Column="0" Text="Nom visite :"/>
-    <Label Grid.Row="1" Grid.Column="0" Text="Nom produit :"/>
-    <Label Grid.Row="2" Grid.Column="0" Text="Rayon :"/>
-    <Label Grid.Row="3" Grid.Column="0" Text="Etage :"/>
-    <Label Grid.Row="4" Grid.Column="0" Text="Prix :"/>
-    <Label Grid.Row="5" Grid.Column="0" Text="Présence :"/>
-    <Label Grid.Row="6" Grid.Column="0" Text="Concurant :"/>
+    <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Text="Nom visite :"/>
+    <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center" Text="Nom produit :"/>
+    <Label Grid.Row="3" Grid.Column="0" VerticalOptions="Center" Text="Rayon :"/>
+    <Label Grid.Row="4" Grid.Column="0" VerticalOptions="Center" Text="Etage :"/>
+    <Label Grid.Row="5" Grid.Column="0" VerticalOptions="Center" Text="Prix :"/>
+    <Label Grid.Row="6" Grid.Column="0" VerticalOptions="Center" Text="Présence :"/>
+    <Label Grid.Row="7" Grid.Column="0" VerticalOptions="Center" Text="Concurrents :"/>
 
-    <Picker Grid.Row="0" Grid.Column="1"/>
-    <Entry Grid.Row="1" Grid.Column="1" Text=""/>
-    <Entry Grid.Row="2" Grid.Column="1" Text=""/>
-    <Entry Grid.Row="3" Grid.Column="1" Text=""/>
-    <Entry Grid.Row="4" Grid.Column="1" Text=""/>
-    <Entry Grid.Row="5" Grid.Column="1" Text=""/>
+    <Picker Grid.Row="1" Grid.Column="1"/>
+    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Nom}"/>
+    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Rayon}"/>
+    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Etage}"/>
+    <Entry Grid.Row="5" Grid.Column="1" Text="{Binding Prix}"/>
+    <Entry Grid.Row="6" Grid.Column="1" Text="{Binding Presence}"/>
 
-    <Switch Grid.Row="6" Grid.Column="1"/>
+    <Switch Grid.Row="7" Grid.Column="1"/>
 
-    <Button Grid.Row="7" Grid.ColumnSpan="2" Content="Valider"/>
+    <Button Grid.Row="9" Grid.ColumnSpan="2" Text="Valider"/>
 
   </Grid>
 </ContentPage>

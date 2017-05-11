@@ -13,7 +13,10 @@ using Android.Widget;
 using VisiteApp.Interfaces;
 using SQLite.Net;
 using System.IO;
+using VisiteApp.Droid.Resources;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(SQLite_Android))]
 namespace VisiteApp.Droid.Resources
 {
     public class SQLite_Android : ISQLite

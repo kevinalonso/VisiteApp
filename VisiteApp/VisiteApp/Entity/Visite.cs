@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite.Net.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace VisiteApp.Entity
     {
         private int _Id;
         private DateTime _DateVisite;
+        private string _NomVisite;
         private string _NomCommercial;
         private bool _IsSynchro;
         private List<Produit> produits;
@@ -19,7 +21,12 @@ namespace VisiteApp.Entity
         {
 
         }
-
+        public Visite(DateTime dateVisite,string nomVisite)
+        {
+            _DateVisite = dateVisite;
+            _NomVisite = nomVisite; 
+        }
+        [PrimaryKey, AutoIncrement]
         public int Id
         {
             get
@@ -72,6 +79,7 @@ namespace VisiteApp.Entity
             }
         }
 
+        [Ignore]
         public List<Produit> Produits
         {
             get
@@ -95,6 +103,19 @@ namespace VisiteApp.Entity
             set
             {
                 _IDServeur = value;
+            }
+        }
+
+        public string NomVisite
+        {
+            get
+            {
+                return _NomVisite;
+            }
+
+            set
+            {
+                _NomVisite = value;
             }
         }
     }

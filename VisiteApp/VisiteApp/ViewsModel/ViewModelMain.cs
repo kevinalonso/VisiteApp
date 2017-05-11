@@ -56,10 +56,6 @@ namespace VisiteApp.ViewsModel
                 pg.BindingContext = vm;
                 this._Navigation.PushAsync(pg).ConfigureAwait(false);
             }
-            else
-            {
-
-            }
            
         }
 
