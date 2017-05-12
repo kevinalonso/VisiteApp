@@ -10,7 +10,7 @@ namespace VisiteApp.WS
 {
     public class WSVisite
     {
-        public async Task postSynchro(IEnumerable<Visite> visites, Action<IRestResponse> callback)
+        public async Task postSynchro(IEnumerable<Visite> visites, Action<IRestResponse,IEnumerable<Visite>> callback)
         {
             //DEBUG
             /*   List<Visite> vs = new List<Visite>();
@@ -59,7 +59,7 @@ namespace VisiteApp.WS
             {
                 IRestResponse response = await client.ExecuteTaskAsync(request);
                 Console.WriteLine(response.Content);
-                callback(response);
+                callback(response,visites);
             }
             catch (Exception error)
             {

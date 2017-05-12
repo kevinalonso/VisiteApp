@@ -137,11 +137,16 @@ namespace VisiteApp.ViewsModel
             // Appel du WS pour synchronisation
         }
 
-        private void callback(IRestResponse obj)
+        private void callback(IRestResponse obj, IEnumerable<Visite> vs)
         {
             WSVisite ws = new WSVisite();
+            DBVisite dbv = new DBVisite();
             ObservableCollection<Visite> visites =ws.JsonToVisite(obj.Content);
             SynchroWStoData(visites);
+            foreach (Visite v in vs)
+            {
+                dbv.delete(v.Id);
+            }
             MessagingCenter.Send<Admin>(this._Admin, "synchro");
         }
 
@@ -179,7 +184,7 @@ namespace VisiteApp.ViewsModel
                 else
                 {
                     //update
-                    dbp.update(p);
+                    dbp.updateByIdServeur(p);
                 }
             }
         }

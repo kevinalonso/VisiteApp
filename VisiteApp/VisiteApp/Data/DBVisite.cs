@@ -48,7 +48,7 @@ namespace VisiteApp.Data
 
         public void updateByIdServeur(Visite visite)
         {
-            _connection.Query<Visite>("UPDATE [Visite] WHERE IdServeur = ?",visite.IdServeur);
+            _connection.Query<Visite>("UPDATE [Visite] SET [NomVisite] = ? , [IsSynchro] = ? , [NomCommercial] = ? , [DateVisite] = ? WHERE [IdServeur] = ?", visite.NomVisite,visite.IsSynchro,visite.NomCommercial,visite.DateVisite, visite.IdServeur);
         }
 
         public Visite get(int id)
