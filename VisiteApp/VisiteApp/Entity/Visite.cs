@@ -15,7 +15,7 @@ namespace VisiteApp.Entity
         private string _NomCommercial;
         private bool _IsSynchro;
         private List<Produit> produits;
-        private int _IDServeur;
+        private int _IdServeur;
 
         public Visite()
         {
@@ -93,16 +93,16 @@ namespace VisiteApp.Entity
             }
         }
 
-        public int IDServeur
+        public int IdServeur
         {
             get
             {
-                return _IDServeur;
+                return _IdServeur;
             }
 
             set
             {
-                _IDServeur = value;
+                _IdServeur = value;
             }
         }
 

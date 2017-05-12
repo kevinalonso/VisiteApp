@@ -11,16 +11,27 @@ namespace VisiteApp.Entity
     {
         private int _Id;
         private string _Rayon;
+        private string _NomProduit;
         private int _Etages;
         private int _Prix;
         private int _NbVue;
         private bool _Concurrents;
-        private Visite _Visite;
+        private int _IdVisite;
         private int _IdServeur;
 
         public Produit()
         {
 
+        }
+        public Produit(string nomprod,string rayon,int etages,int prix,int nbvue,bool conc,int idvisite)
+        {
+            _NomProduit = nomprod;
+            _Rayon = rayon;
+            _Etages = etages;
+            _Prix = prix;
+            _NbVue = nbvue;
+            _Concurrents = conc;
+            _IdVisite = idvisite;
         }
 
         [PrimaryKey, AutoIncrement]
@@ -102,19 +113,6 @@ namespace VisiteApp.Entity
             }
         }
 
-        public Visite Visite
-        {
-            get
-            {
-                return _Visite;
-            }
-
-            set
-            {
-                _Visite = value;
-            }
-        }
-
         public int IdServeur
         {
             get
@@ -125,6 +123,19 @@ namespace VisiteApp.Entity
             set
             {
                 _IdServeur = value;
+            }
+        }
+
+        public string NomProduit
+        {
+            get
+            {
+                return _NomProduit;
+            }
+
+            set
+            {
+                _NomProduit = value;
             }
         }
     }
