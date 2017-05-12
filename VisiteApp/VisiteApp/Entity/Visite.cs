@@ -1,4 +1,5 @@
-﻿using SQLite.Net.Attributes;
+﻿using Newtonsoft.Json;
+using SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +10,18 @@ namespace VisiteApp.Entity
 {
     public class Visite
     {
+        
         private int _Id;
+        [JsonProperty("date_visite")]
         private DateTime _DateVisite;
+        [JsonProperty("libelle")]
         private string _NomVisite;
+        [JsonProperty("nom_commercial")]
         private string _NomCommercial;
         private bool _IsSynchro;
+        [JsonProperty("produits")]
         private List<Produit> produits;
+        [JsonProperty("id")]
         private int _IdServeur;
 
         public Visite()
