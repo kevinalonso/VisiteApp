@@ -22,6 +22,10 @@ namespace VisiteApp.ViewsModel
         private ICommand _Valider;
 
         private ObservableCollection<Visite> _Visites;
+
+        private Visite _SelectionVisite;
+
+        private bool _SwitchCheck;
         #endregion
 
         #region Properties
@@ -75,6 +79,22 @@ namespace VisiteApp.ViewsModel
             }
         }
 
+        public Visite SelectionVisite
+        {
+            get { return _SelectionVisite; }
+            set
+            {
+                OnPropertyChanging(nameof(SelectionVisite));
+                _SelectionVisite = value;
+                OnPropertyChanged(nameof(SelectionVisite));
+            }
+        }
+
+        public bool SwitchCheck()
+        {
+
+        }
+
         #endregion
 
         #region Constructor
@@ -82,6 +102,10 @@ namespace VisiteApp.ViewsModel
         {
             _Navigation = nav;
             Visites = new ObservableCollection<Visite>();
+            SelectionVisite = new Visite();
+            this._SelectionVisite.Produits = new List<Produit>();
+            ProduitEntity = new Produit();
+
             GetVisite();
            
             //Command
@@ -96,6 +120,25 @@ namespace VisiteApp.ViewsModel
 
         private void ValiderExecuted(object obj)
         {
+            //Ajouter la vérification
+
+            ProduitEntity.IdVisite = this._SelectionVisite.Id;
+
+            //Insertion du produit en base
+            DBProduit dbp = new DBProduit();
+            dbp.add(ProduitEntity);
+
+            //Met à jour la Visite avec le nouveau produit
+            DBVisite dbv = new DBVisite();
+            this._SelectionVisite.Produits.Add(ProduitEntity);
+            dbv.update(this._SelectionVisite);
+
+            ProduitEntity.NomProduit = "";
+            ProduitEntity.Rayon = "";
+            ProduitEntity.Etages = 0;
+            ProduitEntity.Prix = 0;
+            ProduitEntity.NbVue = 0;
+
 
         }
 

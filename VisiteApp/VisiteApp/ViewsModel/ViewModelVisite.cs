@@ -38,6 +38,7 @@ namespace VisiteApp.ViewsModel
             if (!String.IsNullOrEmpty(_NomVisite))
             {           
                 Visite v = new Visite(_DateVisite,_NomVisite);
+                v.IsSynchro = false;
                 db.add(v);
             }                    
         }

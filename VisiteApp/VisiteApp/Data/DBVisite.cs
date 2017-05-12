@@ -1,4 +1,5 @@
 ﻿using SQLite.Net;
+using SQLite.Net.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,11 @@ namespace VisiteApp.Data
         public void deleteAll()
         {
             _connection.DeleteAll<Visite>();
+        }
+
+        public void update(Visite visite)
+        {
+            _connection.Update(visite);
         }
 
         public Visite get(int id)

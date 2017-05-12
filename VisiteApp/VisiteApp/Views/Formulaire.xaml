@@ -29,15 +29,15 @@
     <Label Grid.Row="6" Grid.Column="0" VerticalOptions="Center" Text="Présence :"/>
     <Label Grid.Row="7" Grid.Column="0" VerticalOptions="Center" Text="Concurrents :"/>
 
-    <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Visites}" ItemDisplayBinding="{Binding NomVisite}"/>
+    <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Visites}" ItemDisplayBinding="{Binding NomVisite}" SelectedItem="{Binding SelectionVisite}"/>
       
-    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-    <Entry Grid.Row="5" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-    <Entry Grid.Row="6" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding  Path=ProduitEntity.NomProduit, Mode=TwoWay}"/>
+    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Rayon, Mode=TwoWay}"/>
+    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Etage, Mode=TwoWay}" Keyboard="Numeric"/>
+    <Entry Grid.Row="5" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Prix, Mode=TwoWay}" Keyboard="Numeric"/>
+    <Entry Grid.Row="6" Grid.Column="1" Text="{Binding  Path=ProduitEntity.NbVue, Mode=TwoWay}" Keyboard="Numeric"/>
 
-    <Switch Grid.Row="7" Grid.Column="1"/>
+    <Switch Grid.Row="7" Grid.Column="1" IsToggled="{Binding SwitchCheck}"/>
 
     <Button Grid.Row="9" Grid.ColumnSpan="2" Text="Valider" Command="{Binding Valider}"/>
   </Grid>

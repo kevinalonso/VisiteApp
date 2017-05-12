@@ -44,6 +44,7 @@ namespace VisiteApp.Data
         {
             return _connection.Table<Produit>().FirstOrDefault(Produit => Produit.Id == id);
         }
+        
 
 
         public IEnumerable<Produit> getAll()
