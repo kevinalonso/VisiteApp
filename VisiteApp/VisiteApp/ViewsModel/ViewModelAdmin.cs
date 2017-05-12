@@ -24,6 +24,8 @@ namespace VisiteApp.ViewsModel
         private ICommand _Visite;
         private INavigation _Navigation;
         private string _Commercial;
+        private Visite _SelectionVisite;
+        private Admin _Admin;
         #endregion
 
         #region Properties
@@ -41,11 +43,6 @@ namespace VisiteApp.ViewsModel
                 OnPropertyChanged(nameof(Commercial));
             }
         }
-
-        private Admin _Admin;
-        #endregion
-
-        #region Properties
 
         public Admin Admin
         {
@@ -72,13 +69,25 @@ namespace VisiteApp.ViewsModel
             }
         }
 
+        public Visite SelectionVisite
+        {
+            get { return _SelectionVisite; }
+            set
+            {
+                OnPropertyChanging(nameof(SelectionVisite));
+                _SelectionVisite = value;
+                OnPropertyChanged(nameof(SelectionVisite));
+            }
+        }
+
         #endregion
 
         #region Constructor
         public ViewModelAdmin(INavigation nav)
         {
             _Navigation = nav;
-
+            SelectionVisite = new Visite();
+            //Command
             _ModifierProduit = new Command(ModifierExecuted);
             _Synchro = new Command(SynchroExecuted);
             _Produit = new Command(NewProduitExecuted);
@@ -169,7 +178,15 @@ namespace VisiteApp.ViewsModel
 
         private void ModifierExecuted(object obj)
         {
-            // Vers Page produit
+            FormulaireMAJ pg = new FormulaireMAJ();
+            ViewModelFormulaireMAJ vm = new ViewModelFormulaireMAJ(pg.Navigation);
+            vm.VisiteEntity = SelectionVisite;
+
+            DBVisite db = new DBVisite();
+
+            vm.Produits = null;
+            pg.BindingContext = vm;
+            this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
 
 

@@ -64,7 +64,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Label Grid.Row="0" Text="Visites non synchronisées" FontAttributes="Bold"/>
-                <ListView x:Name="ListVisitesNonSynchros" Grid.Row="1" RowHeight="50">
+                <ListView x:Name="ListVisitesNonSynchros" Grid.Row="1" RowHeight="50" SelectedItem="{Binding SelectionVisite}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -84,7 +84,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Grid.Row="2" Text="Modifier"/>
+                <Button Grid.Row="2" Text="Modifier" Command="{Binding ModifierProduit}"/>
             </Grid>
         </Grid>
     </Grid>
