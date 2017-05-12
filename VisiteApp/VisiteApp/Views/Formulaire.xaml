@@ -9,17 +9,17 @@
     </Grid.ColumnDefinitions>
 
     <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
       <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
 
     <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Text="Nom visite :"/>
     <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center" Text="Nom produit :"/>
@@ -29,16 +29,16 @@
     <Label Grid.Row="6" Grid.Column="0" VerticalOptions="Center" Text="Présence :"/>
     <Label Grid.Row="7" Grid.Column="0" VerticalOptions="Center" Text="Concurrents :"/>
 
-    <Picker Grid.Row="1" Grid.Column="1"/>
-    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Nom}"/>
-    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Rayon}"/>
-    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Etage}"/>
-    <Entry Grid.Row="5" Grid.Column="1" Text="{Binding Prix}"/>
-    <Entry Grid.Row="6" Grid.Column="1" Text="{Binding Presence}"/>
+    <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Visites}" ItemDisplayBinding="{Binding NomVisite}"/>
+      
+    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <Entry Grid.Row="5" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+    <Entry Grid.Row="6" Grid.Column="1" Text="{Binding  Path=ProduitEntity., Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
     <Switch Grid.Row="7" Grid.Column="1"/>
 
-    <Button Grid.Row="9" Grid.ColumnSpan="2" Text="Valider"/>
-
+    <Button Grid.Row="9" Grid.ColumnSpan="2" Text="Valider" Command="{Binding Valider}"/>
   </Grid>
 </ContentPage>
