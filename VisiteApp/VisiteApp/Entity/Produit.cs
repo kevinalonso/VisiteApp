@@ -146,5 +146,18 @@ namespace VisiteApp.Entity
                 _NomProduit = value;
             }
         }
+
+        public int IdVisite
+        {
+            get
+            {
+                return _IdVisite;
+            }
+
+            set
+            {
+                _IdVisite = value;
+            }
+        }
     }
 }

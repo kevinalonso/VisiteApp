@@ -20,8 +20,9 @@ namespace VisiteApp.Entity
         private string _NomCommercial;
         private bool _IsSynchro;
         [JsonProperty("produits")]
-        private List<Produit> produits;
+        private List<Produit> produits = new List<Produit>();
         [JsonProperty("id")]
+
         private int _IdServeur;
 
         public Visite()
@@ -33,6 +34,7 @@ namespace VisiteApp.Entity
             _DateVisite = dateVisite;
             _NomVisite = nomVisite; 
         }
+
         [PrimaryKey, AutoIncrement]
         public int Id
         {

@@ -15,7 +15,6 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		VisiteApp\VisiteApp\VisiteApp.projitems*{44933ba3-58ba-4d49-a482-8f0133e3020a}*SharedItemsImports = 4
 		VisiteApp\VisiteApp\VisiteApp.projitems*{45fc069f-1ed4-4486-94cb-662a47f360e9}*SharedItemsImports = 13
-		VisiteApp\VisiteApp\VisiteApp.projitems*{5049c0ca-c706-4ff0-a1c5-840b2ffb671e}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
