@@ -173,7 +173,7 @@ namespace VisiteApp.ViewsModel
         {
             //Récupération en base de données locale les visite pour le formulaire
             DBVisite db = new DBVisite();
-            IEnumerable<Visite> vs = db.getAll();
+            IEnumerable<Visite> vs = db.getAllNoSynchro();
 
             foreach(Visite item in vs)
             {

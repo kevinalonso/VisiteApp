@@ -50,7 +50,7 @@ namespace VisiteApp.Data
         }
         public void updateByIdServeur(Produit produit)
         {
-            _connection.Query<Produit>("UPDATE [Produit] WHERE [IdServeur] = ?", produit.IdServeur);
+            _connection.Query<Produit>("UPDATE [Produit] SET [NomProduit] = ?, [Concurrents] = ?, [NbVue] = ?, [Prix] = ?, [Etages] = ?, [Rayon] = ? WHERE [IdServeur] = ?",produit.NomProduit,produit.Concurrents,produit.NbVue,produit.Prix,produit.Etages, produit.IdServeur);
         }
         public Produit getByIdServeur(int id)
         {
