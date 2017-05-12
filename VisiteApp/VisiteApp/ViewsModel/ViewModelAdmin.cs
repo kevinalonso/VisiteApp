@@ -10,6 +10,7 @@ using VisiteApp.Entity;
 using VisiteApp.Views;
 using VisiteApp.WS;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
 
 namespace VisiteApp.ViewsModel
 {
@@ -121,7 +122,45 @@ namespace VisiteApp.ViewsModel
 
         private void callback(IRestResponse obj)
         {
+            WSVisite ws = new WSVisite();
+            ObservableCollection<Visite> visites =ws.JsonToVisite(obj.Content);
+            SynchroWStoData(visites);
+        }
 
+        private void SynchroWStoData(ObservableCollection<Visite> visites)
+        {
+            DBVisite dbv = new DBVisite();
+           
+            foreach (Visite v in visites)
+            {
+                if(dbv.get(v.IdServeur) == null)
+                {
+                    //insert
+                    dbv.add(v);
+                    SynchroProduits(v.Produits);
+                    
+                }else
+                {
+                    //update
+                }
+            }
+        }
+
+        private void SynchroProduits(List<Produit> produits)
+        {
+            DBProduit dbp = new DBProduit();
+            foreach (Produit p in produits)
+            {
+                if (dbp.get(p.IdServeur) == null)
+                {
+                    // insert
+                    dbp.add(p);
+                }
+                else
+                {
+                    //update
+                }
+            }
         }
 
         private void ModifierExecuted(object obj)

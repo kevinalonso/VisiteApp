@@ -2,6 +2,7 @@
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using VisiteApp.Entity;
 
@@ -43,7 +44,7 @@ namespace VisiteApp.WS
             }
 
 
-            var client = new RestClient("http://localhost/ReleveLineaire/web/api");
+            var client = new RestClient("http://192.168.100.217/ReleveLineaire/web/app_dev.php/api");
             var request = new RestRequest("/visites", Method.POST);
             request.AddHeader("Content-type", "application/json");
             string json = JsonConvert.SerializeObject(vs);
@@ -58,6 +59,11 @@ namespace VisiteApp.WS
             {
                 Console.WriteLine(error);
             }
+        }
+        public ObservableCollection<Visite> JsonToVisite(string json)
+        {
+            ObservableCollection<Visite> visites = JsonConvert.DeserializeObject<ObservableCollection<Visite>>(json);
+            return visites;
         }
     }
 }
