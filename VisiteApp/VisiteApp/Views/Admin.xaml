@@ -54,7 +54,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Grid.Row="2" Text="Modifier"/>
+                <Button Grid.Row="2" Text="Modifier" Command="{Binding ModifierProduitDesynchro}"/>
             </Grid>
             <!-- Liste synchro-->
             <Grid Grid.Row="0" Grid.Column="1">
