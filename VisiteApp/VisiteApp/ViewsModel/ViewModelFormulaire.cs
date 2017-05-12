@@ -26,6 +26,8 @@ namespace VisiteApp.ViewsModel
         private Visite _SelectionVisite;
 
         private bool _SwitchCheck;
+
+        private string _Commercial;
         #endregion
 
         #region Properties
@@ -90,9 +92,26 @@ namespace VisiteApp.ViewsModel
             }
         }
 
-        public bool SwitchCheck()
+        public string Commercial
         {
+            get { return _Commercial; }
+            set
+            {
+                OnPropertyChanging(nameof(Commercial));
+                _Commercial = value;
+                OnPropertyChanged(nameof(Commercial));
+            }
+        }
 
+        public bool SwitchCheck
+        {
+            get { return _SwitchCheck; }
+            set
+            {
+                OnPropertyChanging(nameof(SwitchCheck));
+                _SwitchCheck = value;
+                OnPropertyChanged(nameof(SwitchCheck));
+            }
         }
 
         #endregion
@@ -102,9 +121,8 @@ namespace VisiteApp.ViewsModel
         {
             _Navigation = nav;
             Visites = new ObservableCollection<Visite>();
-            SelectionVisite = new Visite();
-            this._SelectionVisite.Produits = new List<Produit>();
             ProduitEntity = new Produit();
+            SelectionVisite = new Visite();
 
             GetVisite();
            
@@ -121,8 +139,10 @@ namespace VisiteApp.ViewsModel
         private void ValiderExecuted(object obj)
         {
             //Ajouter la vérification
-
+            
+            this._SelectionVisite.NomCommercial = this._Commercial;
             ProduitEntity.IdVisite = this._SelectionVisite.Id;
+            ProduitEntity.Concurrents = SwitchCheck;
 
             //Insertion du produit en base
             DBProduit dbp = new DBProduit();
@@ -131,15 +151,21 @@ namespace VisiteApp.ViewsModel
             //Met à jour la Visite avec le nouveau produit
             DBVisite dbv = new DBVisite();
             this._SelectionVisite.Produits.Add(ProduitEntity);
+            
             dbv.update(this._SelectionVisite);
 
+
+            //Remet à zéro le formulaire
             ProduitEntity.NomProduit = "";
             ProduitEntity.Rayon = "";
             ProduitEntity.Etages = 0;
             ProduitEntity.Prix = 0;
             ProduitEntity.NbVue = 0;
 
+            ProduitEntity = ProduitEntity;
 
+            SwitchCheck = false;
+            
         }
 
         private void GetVisite()

@@ -33,7 +33,7 @@
       
     <Entry Grid.Row="2" Grid.Column="1" Text="{Binding  Path=ProduitEntity.NomProduit, Mode=TwoWay}"/>
     <Entry Grid.Row="3" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Rayon, Mode=TwoWay}"/>
-    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Etage, Mode=TwoWay}" Keyboard="Numeric"/>
+    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Etages, Mode=TwoWay}" Keyboard="Numeric"/>
     <Entry Grid.Row="5" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Prix, Mode=TwoWay}" Keyboard="Numeric"/>
     <Entry Grid.Row="6" Grid.Column="1" Text="{Binding  Path=ProduitEntity.NbVue, Mode=TwoWay}" Keyboard="Numeric"/>
 

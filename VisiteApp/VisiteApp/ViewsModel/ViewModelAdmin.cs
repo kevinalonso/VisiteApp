@@ -22,6 +22,7 @@ namespace VisiteApp.ViewsModel
         private ICommand _Produit;
         private ICommand _Visite;
         private INavigation _Navigation;
+        private string _Commercial;
         #endregion
 
         #region Properties
@@ -29,6 +30,16 @@ namespace VisiteApp.ViewsModel
         public ICommand Synchro { get { return _Synchro; } }
         public ICommand Produit { get { return _Produit; } }
         public ICommand Visite { get { return _Visite; } }
+        public string Commercial
+        {
+            get { return _Commercial; }
+            set
+            {
+                OnPropertyChanging(nameof(Commercial));
+                _Commercial = value;
+                OnPropertyChanged(nameof(Commercial));
+            }
+        }
 
         private Admin _Admin;
         #endregion
@@ -73,6 +84,10 @@ namespace VisiteApp.ViewsModel
             _Visite = new Command(NewVisiteExecuted);
         }
 
+        #endregion
+
+        #region Methods
+
         private void NewVisiteExecuted(object obj)
         {
             // Vers page Visite
@@ -89,6 +104,7 @@ namespace VisiteApp.ViewsModel
             Formulaire pg = new Formulaire();
             ViewModelFormulaire vm = new ViewModelFormulaire(pg.Navigation);
             vm.Formulaire = pg;
+            vm.Commercial = this._Commercial;
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
@@ -105,18 +121,13 @@ namespace VisiteApp.ViewsModel
 
         private void callback(IRestResponse obj)
         {
-            
+
         }
 
         private void ModifierExecuted(object obj)
         {
             // Vers Page produit
         }
-
-        #endregion
-
-        #region Methods
-
 
 
         #endregion

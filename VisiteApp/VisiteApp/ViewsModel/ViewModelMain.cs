@@ -48,10 +48,11 @@ namespace VisiteApp.ViewsModel
 
         private void ConnexionExecuted(object obj)
         {
-            if(this.Login != "")
+            if(this._Login != "")
             {
                 Admin pg = new Admin();
                 ViewModelAdmin vm = new ViewModelAdmin(pg.Navigation);
+                vm.Commercial = this._Login;
                 vm.Admin = pg;
                 pg.BindingContext = vm;
                 this._Navigation.PushAsync(pg).ConfigureAwait(false);
