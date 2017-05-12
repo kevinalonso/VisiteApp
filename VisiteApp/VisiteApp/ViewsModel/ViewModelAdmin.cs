@@ -22,8 +22,11 @@ namespace VisiteApp.ViewsModel
         private ICommand _Synchro;
         private ICommand _Produit;
         private ICommand _Visite;
+        private ICommand _ModifierProduitDesynchro;
         private INavigation _Navigation;
         private string _Commercial;
+        private Visite _SelectionVisite;
+        private Admin _Admin;
         #endregion
 
         #region Properties
@@ -31,6 +34,7 @@ namespace VisiteApp.ViewsModel
         public ICommand Synchro { get { return _Synchro; } }
         public ICommand Produit { get { return _Produit; } }
         public ICommand Visite { get { return _Visite; } }
+        public ICommand ModifierProduitDesynchro { get { return _ModifierProduitDesynchro; } }
         public string Commercial
         {
             get { return _Commercial; }
@@ -41,11 +45,6 @@ namespace VisiteApp.ViewsModel
                 OnPropertyChanged(nameof(Commercial));
             }
         }
-
-        private Admin _Admin;
-        #endregion
-
-        #region Properties
 
         public Admin Admin
         {
@@ -72,17 +71,30 @@ namespace VisiteApp.ViewsModel
             }
         }
 
+        public Visite SelectionVisite
+        {
+            get { return _SelectionVisite; }
+            set
+            {
+                OnPropertyChanging(nameof(SelectionVisite));
+                _SelectionVisite = value;
+                OnPropertyChanged(nameof(SelectionVisite));
+            }
+        }
+
         #endregion
 
         #region Constructor
         public ViewModelAdmin(INavigation nav)
         {
             _Navigation = nav;
-
+            SelectionVisite = new Visite();
+            //Command
             _ModifierProduit = new Command(ModifierExecuted);
             _Synchro = new Command(SynchroExecuted);
             _Produit = new Command(NewProduitExecuted);
             _Visite = new Command(NewVisiteExecuted);
+            _ModifierProduitDesynchro = new Command(ModifierDesynchroExecuted);
         }
 
         #endregion
@@ -177,9 +189,31 @@ namespace VisiteApp.ViewsModel
             }
         }
 
+        //Modifier produit d'une viste non synchro
         private void ModifierExecuted(object obj)
         {
-            // Vers Page produit
+            FormulaireMAJ pg = new FormulaireMAJ();
+            ViewModelFormulaireMAJ vm = new ViewModelFormulaireMAJ(pg.Navigation);
+            vm.VisiteEntity = SelectionVisite;
+            vm.Commercial = _Commercial;
+            vm.DesynchroVisite = false;
+            DBProduit db = new DBProduit();
+            vm.Produits = new ObservableCollection<Produit>(db.getAllByVisite(SelectionVisite.Id));
+            pg.BindingContext = vm;
+            this._Navigation.PushAsync(pg).ConfigureAwait(false);
+        }
+
+        private void ModifierDesynchroExecuted(object obj)
+        {
+            FormulaireMAJ pg = new FormulaireMAJ();
+            ViewModelFormulaireMAJ vm = new ViewModelFormulaireMAJ(pg.Navigation);
+            vm.VisiteEntity = SelectionVisite;
+            vm.Commercial = _Commercial;
+            vm.DesynchroVisite = true;
+            DBProduit db = new DBProduit();
+            vm.Produits = new ObservableCollection<Produit>(db.getAllByVisite(SelectionVisite.Id));
+            pg.BindingContext = vm;
+            this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
 
 
