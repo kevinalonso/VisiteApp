@@ -20,6 +20,7 @@ namespace VisiteApp.Views
                 Device.BeginInvokeOnMainThread(() => getVisitesNonSynchro());
             });
             MessagingCenter.Subscribe<Admin>(this, "synchro", (sender) => {
+                Device.BeginInvokeOnMainThread(() => getVisitesSynchro());
                 Device.BeginInvokeOnMainThread(() => getVisitesNonSynchro());
             });
         }
@@ -35,6 +36,7 @@ namespace VisiteApp.Views
         {
             DBVisite dbv = new DBVisite();
            IEnumerable<Visite> visites = dbv.getAllNoSynchro();
+           IEnumerable<Visite> visites2 = dbv.getAll();
             ListVisitesNonSynchros.ItemsSource = visites;
         }
     }

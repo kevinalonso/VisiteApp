@@ -114,7 +114,12 @@ namespace VisiteApp.ViewsModel
         {
             // Récupération des visites non synchros
             DBVisite db = new DBVisite();
+            DBProduit dbp = new DBProduit();
             ICollection<Visite> visites = db.getAllNoSynchro();
+            foreach (Visite v in visites)
+            {
+                v.Produits = dbp.getAllByVisite(v.Id);
+            }
             WSVisite ws = new WSVisite();
             await ws.postSynchro(visites, callback);
             // Appel du WS pour synchronisation
@@ -134,7 +139,7 @@ namespace VisiteApp.ViewsModel
            
             foreach (Visite v in visites)
             {
-                if(dbv.get(v.IdServeur) == null)
+                if(dbv.getByIdServeur(v.IdServeur) == null)
                 {
                     //insert
                     v.IsSynchro = true;
@@ -143,7 +148,7 @@ namespace VisiteApp.ViewsModel
                 {
                     //update
                     v.IsSynchro = true;
-                    dbv.update(v);                 
+                    dbv.updateByIdServeur(v);                 
                 }
                 SynchroProduits(v.Produits);
             }
@@ -154,7 +159,7 @@ namespace VisiteApp.ViewsModel
             DBProduit dbp = new DBProduit();
             foreach (Produit p in produits)
             {
-                if (dbp.get(p.IdServeur) == null)
+                if (dbp.getByIdServeur(p.IdServeur) == null)
                 {
                     // insert
                     dbp.add(p);
