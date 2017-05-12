@@ -2,35 +2,90 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VisiteApp.Views.Admin">
-	<Grid>
-	<Grid.RowDefinitions>
-		<RowDefinition Height="50"/>
-		<RowDefinition Height="50"/>
-    <RowDefinition Height="50"/>
-		<RowDefinition Height="*"/>
-	</Grid.RowDefinitions>
-	
-	<Button Grid.Row="0" Text="Synchroniser" Command="{Binding Synchro}"/>
-	
-	<Button Grid.Row="1" Text="Nouveau Produit" Command="{Binding Produit}"/>
-    
-   <Button Grid.Row="2" Text="Nouvelle Visite" Command="{Binding Visite}" />
-	
-	<Grid Grid.Row="3">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="*"/>
-			<RowDefinition Height="50"/>
-		</Grid.RowDefinitions>
-		
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*"/>
-			<ColumnDefinition Width="*"/>
-		</Grid.ColumnDefinitions>
-		
-		<ListView x:Name="ListVisite" Grid.Row="0" Grid.Column="0"/>
-		<ListView x:Name="ListProduit" Grid.Row="0" Grid.Column="1"/>
-		
-		<Button Grid.Row="1" Grid.ColumnSpan="2" Text="Modifier"/>
-	</Grid>
-</Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Text="Synchroniser" Command="{Binding Synchro}"/>
+
+        <Button Grid.Row="1" Text="Nouveau Produit" Command="{Binding Produit}"/>
+
+        <Button Grid.Row="2" Text="Nouvelle Visite" Command="{Binding Visite}" />
+
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Visites synchronisées" FontAttributes="Bold"/>
+                <ListView x:Name="ListVisitesSynchros" Grid.Row="1" RowHeight="50">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding NomVisite}" FontSize="Medium" />
+                                            <Label Grid.Row="0" HorizontalOptions="End"  Text="{Binding NomCommercial}" FontSize="Medium" />
+                                            <Label Grid.Row="1" HorizontalOptions="End" Text="{Binding DateVisite,StringFormat='{0:dd MMMM yyyy à HH:mm}'}" FontSize="Medium"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Grid.Row="2" Text="Modifier"/>
+            </Grid>
+            <!-- Liste synchro-->
+            <Grid Grid.Row="0" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Text="Visites non synchronisées" FontAttributes="Bold"/>
+                <ListView x:Name="ListVisitesNonSynchros" Grid.Row="1" RowHeight="50">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="Start">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" HorizontalOptions="Start"  Text="{Binding NomVisite}" FontSize="Medium" />
+                                            <Label Grid.Row="1" HorizontalOptions="End" Text="{Binding DateVisite,StringFormat='{0:dd MMMM yyyy à HH:mm}'}" FontSize="Medium"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Grid.Row="2" Text="Modifier"/>
+            </Grid>
+        </Grid>
+    </Grid>
 </ContentPage>

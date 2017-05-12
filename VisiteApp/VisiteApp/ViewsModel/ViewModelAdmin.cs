@@ -93,7 +93,7 @@ namespace VisiteApp.ViewsModel
         {
             // Vers page Visite
             VisiteForm pg = new VisiteForm();
-            ViewModelVisite vm = new ViewModelVisite(pg.Navigation);
+            ViewModelVisite vm = new ViewModelVisite(pg.Navigation,_Admin);
             vm.Visite = pg;
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
@@ -125,6 +125,7 @@ namespace VisiteApp.ViewsModel
             WSVisite ws = new WSVisite();
             ObservableCollection<Visite> visites =ws.JsonToVisite(obj.Content);
             SynchroWStoData(visites);
+            MessagingCenter.Send<Admin>(this._Admin, "synchro");
         }
 
         private void SynchroWStoData(ObservableCollection<Visite> visites)
@@ -136,13 +137,15 @@ namespace VisiteApp.ViewsModel
                 if(dbv.get(v.IdServeur) == null)
                 {
                     //insert
-                    dbv.add(v);
-                    SynchroProduits(v.Produits);
-                    
+                    v.IsSynchro = true;
+                    dbv.add(v);                                     
                 }else
                 {
                     //update
+                    v.IsSynchro = true;
+                    dbv.update(v);                 
                 }
+                SynchroProduits(v.Produits);
             }
         }
 
@@ -159,6 +162,7 @@ namespace VisiteApp.ViewsModel
                 else
                 {
                     //update
+                    dbp.update(p);
                 }
             }
         }

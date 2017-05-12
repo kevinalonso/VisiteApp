@@ -66,5 +66,12 @@ namespace VisiteApp.Data
                 select t
                 ).Where(Visite => Visite.IsSynchro == false).ToList();
         }
+        public ICollection<Visite> getAllSynchro()
+        {
+            return (
+                from t in _connection.Table<Visite>()
+                select t
+                ).Where(Visite => Visite.IsSynchro == true).ToList();
+        }
     }
 }
