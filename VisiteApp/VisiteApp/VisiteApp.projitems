@@ -12,6 +12,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBProduit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\DBVisite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entity\Produit.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Entity\Visite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ISQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\ViewModelAdmin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\ViewModelFormulaire.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\ViewModelMain.cs" />
@@ -31,6 +37,7 @@
       <DependentUpon>VisiteForm.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)WS\WSVisite.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml">

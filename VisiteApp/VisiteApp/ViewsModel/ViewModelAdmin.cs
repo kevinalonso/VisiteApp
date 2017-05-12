@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using RestSharp;
 using VisiteApp.Core;
+using VisiteApp.Data;
+using VisiteApp.Entity;
 using VisiteApp.Views;
+using VisiteApp.WS;
 using Xamarin.Forms;
 
 namespace VisiteApp.ViewsModel
@@ -89,11 +93,19 @@ namespace VisiteApp.ViewsModel
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
 
-        private void SynchroExecuted(object obj)
+        private async void SynchroExecuted(object obj)
         {
-           // Récupération des visites non synchros
+            // Récupération des visites non synchros
+            DBVisite db = new DBVisite();
+            ICollection<Visite> visites = db.getAllNoSynchro();
+            WSVisite ws = new WSVisite();
+            await ws.postSynchro(visites, callback);
+            // Appel du WS pour synchronisation
+        }
 
-          // Appel du WS pour synchronisation
+        private void callback(IRestResponse obj)
+        {
+            
         }
 
         private void ModifierExecuted(object obj)
