@@ -48,8 +48,22 @@ namespace VisiteApp.Data
         {
             _connection.Update(produit);
         }
+        public void updateByIdServeur(Produit produit)
+        {
+            _connection.Query<Produit>("UPDATE [Produit] WHERE [IdServeur] = ?", produit.IdServeur);
+        }
+        public Produit getByIdServeur(int id)
+        {
+            return _connection.Table<Produit>().FirstOrDefault(Produit => Produit.IdServeur == id);
+        }
 
-
+        public List<Produit> getAllByVisite(int id )
+        {
+            return (
+                from t in _connection.Table<Produit>()
+                select t
+                    ).Where(p => p.IdVisite == id).ToList();
+        }
 
         public IEnumerable<Produit> getAll()
         {

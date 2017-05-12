@@ -46,9 +46,19 @@ namespace VisiteApp.Data
             _connection.Update(visite);
         }
 
+        public void updateByIdServeur(Visite visite)
+        {
+            _connection.Query<Visite>("UPDATE [Visite] WHERE IdServeur = ?",visite.IdServeur);
+        }
+
         public Visite get(int id)
         {
             return _connection.Table<Visite>().FirstOrDefault(Visite => Visite.Id == id);
+        }
+
+        public Visite getByIdServeur(int id)
+        {
+            return _connection.Table<Visite>().FirstOrDefault(Visite => Visite.IdServeur == id);
         }
 
 

@@ -147,13 +147,14 @@ namespace VisiteApp.ViewsModel
             //Insertion du produit en base
             DBProduit dbp = new DBProduit();
             dbp.add(ProduitEntity);
-
+            IEnumerable<Produit> prd = dbp.getAll();
             //Met à jour la Visite avec le nouveau produit
             DBVisite dbv = new DBVisite();
             this._SelectionVisite.Produits.Add(ProduitEntity);
             
             dbv.update(this._SelectionVisite);
 
+           IEnumerable<Visite> vs = dbv.getAll();
 
             //Remet à zéro le formulaire
             ProduitEntity.NomProduit = "";
