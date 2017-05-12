@@ -18,6 +18,7 @@ namespace VisiteApp.ViewsModel
         private ICommand _CreerVisite;
         private INavigation _Navigation;
         private string _NomVisite;
+        private Admin _Admin;
         #endregion
 
         #region Properties
@@ -25,9 +26,10 @@ namespace VisiteApp.ViewsModel
         #endregion
 
         #region Constructor
-        public ViewModelVisite(INavigation nav)
+        public ViewModelVisite(INavigation nav,Admin admin)
         {
             _Navigation = nav;
+            _Admin = admin;
             this._CreerVisite = new Command(CreerVisisteExecuted);
         }
 
@@ -40,6 +42,7 @@ namespace VisiteApp.ViewsModel
                 Visite v = new Visite(_DateVisite,_NomVisite);
                 v.IsSynchro = false;
                 db.add(v);
+                MessagingCenter.Send<Admin>(_Admin, "new");
             }                    
         }
 
@@ -111,6 +114,19 @@ namespace VisiteApp.ViewsModel
             set
             {
                 _Navigation = value;
+            }
+        }
+
+        public Admin Admin
+        {
+            get
+            {
+                return _Admin;
+            }
+
+            set
+            {
+                _Admin = value;
             }
         }
 

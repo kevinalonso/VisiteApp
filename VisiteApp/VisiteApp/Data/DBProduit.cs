@@ -44,7 +44,11 @@ namespace VisiteApp.Data
         {
             return _connection.Table<Produit>().FirstOrDefault(Produit => Produit.Id == id);
         }
-        
+        public void update(Produit produit)
+        {
+            _connection.Update(produit);
+        }
+
 
 
         public IEnumerable<Produit> getAll()

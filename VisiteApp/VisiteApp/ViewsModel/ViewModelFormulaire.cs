@@ -92,7 +92,7 @@ namespace VisiteApp.ViewsModel
 
         public bool SwitchCheck()
         {
-
+            return true;
         }
 
         #endregion
