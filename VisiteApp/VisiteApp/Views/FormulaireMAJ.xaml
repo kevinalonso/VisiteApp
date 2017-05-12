@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VisiteApp.Views.FormulaireMAJ">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Grid.RowDefinitions>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="50"/>
+      <RowDefinition Height="*"/>
+      <RowDefinition Height="auto"/>
+    </Grid.RowDefinitions>
+
+    <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Center" Text="Nom Produit :"/>
+    <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Center" Text="Nouveau nom :"/>
+    <Label Grid.Row="3" Grid.Column="0" VerticalOptions="Center" Text="Rayon :"/>
+    <Label Grid.Row="4" Grid.Column="0" VerticalOptions="Center" Text="Etage :"/>
+    <Label Grid.Row="5" Grid.Column="0" VerticalOptions="Center" Text="Prix :"/>
+    <Label Grid.Row="6" Grid.Column="0" VerticalOptions="Center" Text="Présence :"/>
+    <Label Grid.Row="7" Grid.Column="0" VerticalOptions="Center" Text="Concurrents :"/>
+
+    <Picker Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Produits}" ItemDisplayBinding="{Binding NomProduit}" SelectedItem="{Binding SelectionProduit}"/>
+
+    <Entry Grid.Row="2" Grid.Column="1" Text="{Binding  Path=ProduitEntity.NomProduit, Mode=TwoWay}"/>
+    <Entry Grid.Row="3" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Rayon, Mode=TwoWay}"/>
+    <Entry Grid.Row="4" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Etages, Mode=TwoWay}" Keyboard="Numeric"/>
+    <Entry Grid.Row="5" Grid.Column="1" Text="{Binding  Path=ProduitEntity.Prix, Mode=TwoWay}" Keyboard="Numeric"/>
+    <Entry Grid.Row="6" Grid.Column="1" Text="{Binding  Path=ProduitEntity.NbVue, Mode=TwoWay}" Keyboard="Numeric"/>
+
+    <Switch Grid.Row="7" Grid.Column="1" IsToggled="{Binding SwitchCheck}"/>
+
+    <Button Grid.Row="9" Grid.ColumnSpan="2" Text="Valider" Command="{Binding Valider}"/>
+  </Grid>
+</ContentPage>

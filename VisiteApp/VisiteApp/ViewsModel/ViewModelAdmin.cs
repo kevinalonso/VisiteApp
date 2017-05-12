@@ -197,7 +197,7 @@ namespace VisiteApp.ViewsModel
             pg.BindingContext = vm;
             this._Navigation.PushAsync(pg).ConfigureAwait(false);
         }
-
+        //Modifier les produit d'une visite qui a été synchro
         private void ModifierDesynchroExecuted(object obj)
         {
             FormulaireMAJ pg = new FormulaireMAJ();
